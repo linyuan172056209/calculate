@@ -1,0 +1,122 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace C_8
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Yunsuan T = new Yunsuan();
+            Console.WriteLine("输入操作数以及操作符时请换行");
+            string s1 = Console.ReadLine();
+            T.x = float.Parse(s1);
+            string s = Console.ReadLine();
+            string s2 = Console.ReadLine();
+            T.y = float.Parse(s2);
+            T.Task(s);
+            T.Task(T.x, T.y);
+            string s3;string s4;
+            Console.WriteLine("请输入字符串一");
+             s3= Console.ReadLine();
+            char[] b= s3.ToCharArray();
+            Console.WriteLine("请输入对字符串的操作，“+”或者“-”");
+            string a = Console.ReadLine();
+            Console.WriteLine("请输入字符串二");
+             s4= Console.ReadLine();
+            char[] c= s4.ToCharArray();
+            T.Task(a,b,c);
+        }
+    }
+    class Yunsuan
+    {
+        public float x;
+        public float y;
+        public float z;
+        public bool Task(string task)
+        {
+            try
+            {
+                if (task == "+")
+                {
+                    z = x + y;
+                    Console.WriteLine(z);
+                    return true;
+                }
+                else if (task == "-")
+                {
+                    z = x - y;
+                    Console.WriteLine(z);
+                    return true;
+                }
+                else if (task == "*")
+                {
+                    z = x * y;
+                    Console.WriteLine(z);
+                    return true;
+                }
+                else if (task == "/")
+                {
+                    z = x / y;
+                    Console.WriteLine(z);
+                    return true;
+                }
+                else
+                    Console.WriteLine("输入的运算符有误");
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool Task(float a, float b)
+        {
+            try
+            {
+                if (a == b)
+                {
+                    Console.WriteLine("两个操作数相等");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("两个操作数不相等");
+                    return false;
+                }
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public void Task(string s,char []a,char []b)
+        {
+            int length1 = a.Length;
+            int length2 = b.Length;
+                if (s == "+")
+                {
+                    Console.Write(a);
+                    Console.Write(b);
+                }
+                else if (s == "-")
+                {
+                    for (int i = 0; i < length1; i++)
+                    {
+                        for (int j = 0; j < length2; j++)
+                        {
+                            if (a[i] == b[j])
+                            {
+                                a[i] = '\0';
+
+                            }
+                        }
+                        Console.Write(a[i]);
+                    }
+                }
+        }
+    }
+}
